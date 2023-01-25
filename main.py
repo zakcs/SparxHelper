@@ -2,12 +2,13 @@ import tkinter as tk
 from tkinter import ttk
 import json
 import random
+import sys
 
 errorFinding = ["cant find that mate", "are u sure that exists??", "nope cant find it", "bookwork code not found im afraid", "i dont think you've saved that"]
 
 def save_answer():
     # Get the bookwork code and answer from the entries
-    bookwork_code = bookwork_code_entry.get()
+    bookwork_code = bookwork_code_entry.get().lower()
     answer = answer_entry.get()
 
     # Load the existing data from the json file
@@ -29,7 +30,7 @@ def save_answer():
 
 def recall_answer():
     # Get the bookwork code from the entry
-    bookwork_code = recall_entry.get()
+    bookwork_code = recall_entry.get().lower()
 
     # Load the data from the json file
     with open('data.json', 'r') as f:
@@ -44,6 +45,7 @@ def recall_answer():
     status_label.config(text="yay")
 
 root = tk.Tk()
+root.wm_iconbitmap(default=sys._MEIPASS + '\\myicon.ico')
 root.title("sparx thingy")
 
 # Create a main frame to hold the widgets
